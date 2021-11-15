@@ -8,6 +8,7 @@ class Promotion(models.Model):
 
 class Collection(models.Model):
     title = models.CharField(max_length=252)
+    featured_product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, related_name='+')
 
 
 class Product(models.Model):
@@ -20,7 +21,7 @@ class Product(models.Model):
     promotions = models.ManyToManyField(Promotion)
 
 
-class Customer(models.model):
+class Customer(models.Model):
     MEMBERSHIP_BRONZE = 'B'
     MEMBERSHIP_SILVER = 'S'
     MEMBERSHIP_GOLD = 'G'
